@@ -131,7 +131,6 @@
     <Content Include="Search.aspx" />
     <Content Include="GetImages.aspx" />
     <Content Include="SingleView.aspx" />
-    <Content Include="TestCommercials.aspx" />
     <Content Include="xml\commercials.xml" />
     <Content Include="xml\commercialsIncrementer.xslt" />
     <Content Include="xml\commercialsImport.xslt" />
@@ -238,13 +237,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="TestCommercials.aspx.cs">
-      <DependentUpon>TestCommercials.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestCommercials.aspx.designer.cs">
-      <DependentUpon>TestCommercials.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

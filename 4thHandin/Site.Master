@@ -4,7 +4,7 @@
     <head runat="server">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><%: Page.Title %>- My ASP.NET Application</title>
+        <title><%: SiteTitle() %> - <%: Page.Title %></title>
 
         <asp:PlaceHolder runat="server">
             <%: Scripts.Render("~/bundles/modernizr") %>
@@ -67,10 +67,10 @@
                         </ul>
                         <div class="mobile-hide">
                             <div style="margin-top: 8px; margin-left: 0px; float: right; ">
-                                <asp:Button ID="Button2" runat="server" Text="Search" OnClick="Button2_Click" CssClass="buttonsearch btn btn-primary-c btn-outline-secondary top-search-button" />
+                                <asp:Button ID="ButtonSearch2" runat="server" Text="Search" OnClick="ButtonSearch2_Click" CssClass="buttonsearch btn btn-primary-c btn-outline-secondary top-search-button" />
                             </div>
                             <div style="margin-top: 8px; float: right;">
-                                <asp:TextBox ID="TextBox2" runat="server" CssClass="searchtxt form-control top-search-input"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxSearch2" runat="server" CssClass="searchtxt form-control top-search-input"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -81,15 +81,9 @@
                 <hr />
                 <footer >
                     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
-                    <center>
-                        <p><asp:Label ID="LabelJoke" runat="server" Text="Label"></asp:Label></p>     
-                    </center>
-                    <center alt="Made by group 42 & 69 - collectively represented by their combined value of 111 expressed in roman numerals - CXI - ( ty for correction seb )">
-                        <p style="font-size:2em"> 
-                            <br /><br /><br /> 
-                            <asp:Label ID="DevLabel" runat="server" Text='CXI'></asp:Label>
+                        <p style="text-align:center" alt="Made by group 42 & 69 - collectively represented by their combined value of 111 expressed in roman numerals - CXI" >
+                            <asp:Label ID="LabelJoke" runat="server" Text="Label"></asp:Label> - <asp:Label ID="DevLabel" runat="server" Text='CXI'></asp:Label>
                         </p>
-                    </center>
                 </footer>
             </div>
         </form>

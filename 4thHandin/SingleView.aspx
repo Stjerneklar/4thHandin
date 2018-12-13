@@ -38,14 +38,14 @@
                         <Item>
                             <tr style="background-color:FFECD8">
                               <td>
-                                   <%# DataBinder.Eval(Container.DataItem, "company") %>
-                                    <%# DataBinder.Eval(Container.DataItem, "viewcount") %>
+                                   <%# Eval("company") %>
+                                    <%# Eval("viewcount") %>
                                 </td>
                             </tr>
                             <tr style="background-color:FFECD8">
                                 <td>
-                                    <%# DataBinder.Eval(Container.DataItem, "logo") %>
-                                    <%# DataBinder.Eval(Container.DataItem, "webpage") %>
+                                    <%# Eval("logo") %>
+                                    <%# Eval("webpage") %>
                                 </td>
                             </tr>
                         </Item>

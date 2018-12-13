@@ -16,28 +16,18 @@ namespace _4thHandin
            LabelJoke.Text = FourthProjectLogic.GetJokeFromAPI();
         }
 
-        protected string DevInfo()
+        protected string SiteTitle()
         {
-            return "CXI";
+            return FourthProjectLogic.CurrentGroupSettings.SiteTitle;
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void ButtonSearch2_Click(object sender, EventArgs e)
         {
-            FourthProjectLogic.SearchMovies(TextBox2.Text);
+            FourthProjectLogic.SearchMovies(TextBoxSearch2.Text);
         }
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             FourthProjectLogic.SearchMovies(TextBoxSearch.Text);
         }
-/*        private void TextBoxSearch_KeyDown(object sender, KeyEventArgs e) //fuck this ill do it in jquery instead.
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button.PerformClick();
-            }
-        }*/
-
-
-
     }
 }

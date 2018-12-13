@@ -13,7 +13,31 @@ namespace _4thHandin
     {
         public static string ConnStr = ConfigurationManager.ConnectionStrings["MovieDBListConnectionString"].ToString();
 
-        public static void SearchMovies(string searchterm) { HttpContext.Current.Response.Redirect("~/search/?queryName=" + searchterm); }
+        //string or int setting current group 
+
+        //object or string array of settings per group
+
+        //dynamic group/design properties brainstorm: bundleconfig path, site title, hell we could run different js from these instead of conditionally running or doing different things
+
+        public class GroupSettings
+        {
+            public string SiteTitle;
+            public GroupSettings(string SiteTitle)    //constructor setting all properties from passed values
+            {
+                this.SiteTitle = SiteTitle;
+            }
+        }
+
+        public static GroupSettings InitGroupSettings(){
+            GroupSettings Group42 = new GroupSettings("MovieTalk");
+            GroupSettings Group62b = new GroupSettings("mTube");
+            return Group42;
+            //return Group62b;
+        }
+
+        public static GroupSettings CurrentGroupSettings = InitGroupSettings();
+
+            public static void SearchMovies(string searchterm) { HttpContext.Current.Response.Redirect("~/search/?queryName=" + searchterm); }
 
         public static string GetJokeFromAPI()
         {
@@ -43,7 +67,7 @@ namespace _4thHandin
             public static string GetPosterUrl(string title,int year)
             {
                 string result = OmdbAPI.NameAPI(title,year);
-                string poster = "failed to get poster";
+                string poster = "N/A";
 
                 File.WriteAllText(HttpContext.Current.Server.MapPath("~/MyFiles/Latestresult.xml"), result);
                 XmlDocument doc = new XmlDocument();
@@ -58,6 +82,113 @@ namespace _4thHandin
                     }
                 }
                 return poster;
+            }            
+
+            public static string GetImagesFromApi()
+            {
+                List<Movie> resultdata = Movie.ListMoviesByNoPoster();
+
+                //use a dataset here to avoid doing individual updates?. instead of updating the db we update a dataset and then we do one action with the db synching all the changes
+                foreach (Movie movie in resultdata)
+                {
+                    movie.posterpath = GetPosterUrl(movie.title, movie.year);       //set the loops current movie objects posterpath to the return value of getposterurl method
+                    if (movie.posterpath != "N/A")                                  //dont update the database for this movie if we got no url for it
+                    {
+                    movie.UpdatePoster();           //use the movie objects updateposter method
+                    }
+                }
+                return resultdata.Count.ToString();
+            }
+
+        }
+
+        public class Movie
+        {
+            public static DataAccessLayerTableAdapters.MovieDBListTableAdapter MovieTableAdapter = new DataAccessLayerTableAdapters.MovieDBListTableAdapter();
+
+            public int    id;
+            public string title;
+            public string genre;
+            public int    year;
+            public int    viewcount;
+            public string posterpath;
+            public Movie(int id, string title, string genre, int year, int viewcount, string posterpath)    //constructor setting all properties from passed values
+            {
+                this.id =         id;
+                this.title =      title;
+                this.genre =      genre;
+                this.year =       year;
+                this.viewcount =  viewcount;
+                this.posterpath = posterpath;
+            }
+            
+            public Movie(int ID) //constructor via DataSet - essentially the same as searching for movie by id but more sexier
+            {
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByID(ID);
+
+                this.id = int.Parse(movieDBListRows[0]["ID"].ToString());
+                this.title = movieDBListRows[0]["Title"].ToString();
+                this.genre = movieDBListRows[0]["Genre"].ToString();
+                this.year = int.Parse(movieDBListRows[0]["Year"].ToString());
+                this.viewcount = int.Parse(movieDBListRows[0]["Viewcount"].ToString());
+                this.posterpath = movieDBListRows[0]["PosterPath"].ToString(); //default "N/A" value set in dataset rather than having it throw an exception on nulls, as was standard
+            }
+
+            public override string ToString()
+            {
+                string output = "That Movie " + this.title + ", i think it was made in " + this.year + " or so... was one of those " + this.genre;
+                output += " flicks... folks round here have taken a shine to it " + this.viewcount + " times. you can find its poster at ye olde uniform resource locator " + this.posterpath;
+                return output;
+            }
+
+            public void IncrementViewcount()
+            {
+                MovieTableAdapter.Update( this.title, this.genre, this.year, this.viewcount + 1, this.posterpath, this.id, this.id);
+            }
+            public void UpdatePoster()
+            {
+                MovieTableAdapter.Update(this.title, this.genre, this.year, this.viewcount, this.posterpath, this.id, this.id);
+            }
+
+            private static List<Movie> MovieListLoader(DataAccessLayer.MovieDBListDataTable movieDBListRows)
+            {
+                var movieList = new List<Movie>();
+
+                foreach (DataAccessLayer.MovieDBListRow row in movieDBListRows)
+                {
+                    Movie readmovie = new Movie(row.ID, row.Title, row.Genre, row.Year, row.Viewcount, row.PosterPath);
+                    movieList.Add(readmovie);
+                }
+                return movieList;
+            }
+
+            public static List<Movie> ListAllMovies()
+            {
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetData();
+                return MovieListLoader(movieDBListRows);
+            }
+
+            public static List<Movie> ListMoviesByGenre(string Genre)
+            {
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByGenre(Genre);  
+                return MovieListLoader(movieDBListRows);
+            }
+            
+            public static List<Movie> ListMoviesByNoPoster()
+            {
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByNotHavingPosterImageUrl();
+                return MovieListLoader(movieDBListRows);
+            }
+            public static List<Movie> ListMoviesByTitle(string Title)
+            {
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByTitle(Title);
+                return MovieListLoader(movieDBListRows);
+            }
+
+            public static List<Movie> ListMoviesTop10()
+            {
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.MoviesTop10();
+                return MovieListLoader(movieDBListRows);
             }
         }
 
@@ -123,87 +254,6 @@ namespace _4thHandin
                 MakeTempXml();  //keep the temp file updated... updatetemp would probably be a better name 
 
                 return randomcommercialToDisplayPosition;
-            }
-        }
-
-        public class Movie
-        {
-            public static DataAccessLayerTableAdapters.MovieDBListTableAdapter MovieTableAdapter = new DataAccessLayerTableAdapters.MovieDBListTableAdapter();
-
-            public int id;
-            public string title;
-            public string genre;
-            public int year;
-            public int viewcount;
-            public string posterpath;
-            public Movie(int id, string title, string genre, int year, int viewcount, string posterpath)    //constructor setting all properties from passed values
-            {
-                this.id = id;
-                this.title = title;
-                this.genre = genre;
-                this.year = year;
-                this.viewcount = viewcount;
-                this.posterpath = posterpath;
-            }
-            
-            public Movie(int ID) //constructor via DataSet - essentially the same as searching for movie by id but more sexier
-            {
-                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByID(ID);
-
-                this.id = Int32.Parse(movieDBListRows[0]["id"].ToString());
-                this.title = movieDBListRows[0]["title"].ToString();
-                this.genre = movieDBListRows[0]["genre"].ToString();
-                this.year = Int32.Parse(movieDBListRows[0]["year"].ToString());
-                this.viewcount = Int32.Parse(movieDBListRows[0]["viewcount"].ToString());
-                this.posterpath = movieDBListRows[0]["posterpath"].ToString();
-            }
-
-            public override string ToString()
-            {
-                string outputtet = "That Movie " + this.title + ", i think it was made in " + this.year + " or so... was one of those " + this.genre;
-                outputtet += " flicks... folks round here have taken a shine to it " + this.viewcount + " times. you can find its poster at ye olde uniform resource locator " + this.posterpath;
-                return outputtet;
-            }
-
-            public void IncrementViewcount()
-            {
-                MovieTableAdapter.Update( this.title, this.genre, this.year, this.viewcount + 1, this.posterpath, this.id, this.id);
-            }
-
-            private static List<Movie> MovieListLoader(DataAccessLayer.MovieDBListDataTable movieDBListRows)
-            {
-                var movieList = new List<Movie>();
-
-                foreach (DataAccessLayer.MovieDBListRow row in movieDBListRows)
-                {
-                    int id = Int32.Parse(row["id"].ToString());
-                    string title = row["title"].ToString();
-                    string genre = row["genre"].ToString();
-                    int year = Int32.Parse(row["year"].ToString());
-                    int viewcount = Int32.Parse(row["viewcount"].ToString());
-                    string posterpath = row["posterpath"].ToString();
-                    Movie readmovie = new Movie(id, title, genre, year, viewcount, posterpath);
-                    movieList.Add(readmovie);
-                }
-                return movieList;
-            }
-
-            public static List<Movie> ListMoviesByGenre(string Genre)
-            {
-                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByGenre(Genre);  
-                return MovieListLoader(movieDBListRows);
-            }
-
-            public static List<Movie> ListMoviesByTitle(string Title)
-            {
-                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByTitle(Title);
-                return MovieListLoader(movieDBListRows);
-            }
-
-            public static List<Movie> ListMoviesTop10()
-            {
-                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.MoviesTop10();
-                return MovieListLoader(movieDBListRows);
             }
         }
     }

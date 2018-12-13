@@ -6,7 +6,7 @@ namespace _4thHandin
     {
         protected void Page_Load(object sender, EventArgs e)
         {          
-            //redirect to home if there is no querystring instead of crashing
+            //redirect to home if there is no querystring 
             if (string.IsNullOrWhiteSpace(Request.QueryString["queryName"]))
             {
                 Response.Redirect("~/");
