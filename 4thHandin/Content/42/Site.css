@@ -39,6 +39,8 @@
 }
 */
 
+
+
 body > form {
     min-height: 100%;
     height: 100%;
@@ -288,4 +290,15 @@ textarea {
     position: absolute;
     top: 0;
     z-index: -1;
+}
+
+
+.commercial-box span:before {
+    content: "ad by";
+    font-size: 0.7em;
+}
+
+.commercial-box span {
+    float: right;
+    font-size: 0.9em;
 }

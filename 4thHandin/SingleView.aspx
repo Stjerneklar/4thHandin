@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SingleView.aspx.cs" Inherits="_4thHandin.SingleView" %>
+﻿<%@ Page Title="Movie Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SingleView.aspx.cs" Inherits="_4thHandin.SingleView" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container container-spacing">
@@ -9,7 +9,7 @@
         <div class="col-md-9 card-single-view radius" style="padding: 10px;">
 
             <div class="col-md-4 col-sm-12 image-poster-box">
-                <asp:Image ID="ImagePoster" CssClass="single-view-img-center" runat="server" Height="356px" AlternateText="Poster" ImageUrl="~/MyFiles/default-img.png" />
+                <asp:Image ID="ImagePoster" CssClass="single-view-img-center" runat="server" Height="356px"  AlternateText='Poster for the movie' ImageUrl="~/MyFiles/default-img.png" />
             </div>
 
             <div class="col-md-8 col-sm-12" style="padding-top:10px;padding-bottom:40px;">
@@ -29,32 +29,21 @@
         </div>
 
         <div class="col-md-3 col-sm-12  offset-md-1">
-            <div class=" commercial-box radius">Commercials Here
-                <asp:repeater id="rpMyRepeater" runat="server">
-                    <HeaderTemplate>
-                        <Table border="0">
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <Item>
-                            <tr style="background-color:FFECD8">
-                              <td>
-                                   <%# DataBinder.Eval(Container.DataItem, "company") %>
-                                    <%# DataBinder.Eval(Container.DataItem, "viewcount") %>
-                                </td>
-                            </tr>
-                            <tr style="background-color:FFECD8">
-                                <td>
-                                    <%# DataBinder.Eval(Container.DataItem, "logo") %>
-                                    <%# DataBinder.Eval(Container.DataItem, "webpage") %>
-                                </td>
-                            </tr>
-                        </Item>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                        </Table>
-                    </FooterTemplate>
-                </asp:repeater>
-            </div>
+            <asp:repeater id="rpMyRepeater" runat="server">
+                <ItemTemplate>
+                    <div class="commercial-box radius">
+                        <a href="http://<%# Eval("webpage") %>">
+                            <img alt="Commercial for <%# Eval("company") %>" style="width:100%" src="../Myfiles/<%# Eval("logo")%>" />
+                            <span style="text-align:center">
+                                <%# Eval("company") %>
+                            </span>
+                            <div style="display:none" class="ad-viewcount">
+                                <%# Eval("viewcount") %>
+                            </div>
+                        </a>
+                        </div>
+                </ItemTemplate>
+            </asp:repeater>
         </div>
     </div>
 
@@ -70,7 +59,7 @@
                             <a href='SingleView.aspx?queryID=<%# Eval ("ID")%>'>
                                 <div class="gradient"></div>
 
-                                <asp:Image ID="Image2" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'" AlternateText='<%# Eval("Title") %>' />
+                                <asp:Image ID="Image2" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'" />
                                 <label class="card-bottom-year"><%# Eval("Year") %></label>
                                 <label class="card-bottom-genre"><%# Eval("Genre") %></label>
 

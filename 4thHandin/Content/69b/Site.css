@@ -1,4 +1,7 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -778,4 +781,15 @@ h1 {
 
 .card-single-view {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+.commercial-box span:before {
+    content: "ad by";
+    font-size: 0.7em;
+}
+
+.commercial-box span {
+    float: right;
+    font-size: 0.9em;
 }
