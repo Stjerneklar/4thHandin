@@ -13,11 +13,11 @@
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-     <webopt:bundlereference runat="server" path="~/Content/69b/css" /> 
- <!--
+    <!--  <webopt:bundlereference runat="server" path="~/Content/69b/css" />      -->
+
     <webopt:bundlereference runat="server" path="~/Content/42/css" />
      
-     -->
+
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -51,22 +51,26 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">4th Project</a>
+              
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
+                      
+                       <li  class="logoimg"> <img src="img/LogoFilmwalkRsz.png"/> </li>
+                       
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/commercials">Commercials</a></li>
+                     
                         <li><a runat="server" href="~/DisplayTopMovies">Top 10 Movies</a></li>
                         <li><a runat="server" href="~/MoviesByCategory">MoviesByCategory</a></li>
-                        <li><a runat="server" href="~/GetImages">GetImages</a></li>
-                        <li>
-                           <asp:TextBox ID="TextBoxSearch"  runat="server"></asp:TextBox><asp:Button ID="ButtonSearch" runat="server" Text="Search" OnClick="ButtonSearch_Click" />
-                        </li>
-
+                    
+                       
                     </ul>
+                    <span class="searchbar">
+                    <asp:TextBox ID="TextBoxSearch"  runat="server"></asp:TextBox><asp:Button ID="ButtonSearch" runat="server" Text="Search" OnClick="ButtonSearch_Click" />
+                        </span>
                 </div>
             </div>
+            
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">

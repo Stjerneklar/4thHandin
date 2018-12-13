@@ -126,6 +126,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img\LogoFilmwalk.png" />
+    <Content Include="img\LogoFilmwalkRsz.png" />
     <Content Include="Myfiles\default-img.jpg" />
     <Content Include="img\mask-title.png" />
     <Content Include="MoviesByCategory.aspx" />

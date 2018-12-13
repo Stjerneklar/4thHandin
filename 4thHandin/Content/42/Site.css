@@ -2,7 +2,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: red;
+    /*background-color: red;*/
     color: #6a6a6a;
 }
 
@@ -141,4 +141,10 @@ opacity:0.7;
     position: absolute;
     top: 0;
     z-index: -1;
+}
+
+.searchbar {
+    float: right;
+    margin-top:1%;
+   
 }
