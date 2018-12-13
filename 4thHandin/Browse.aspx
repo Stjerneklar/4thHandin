@@ -13,7 +13,7 @@
                     <div class="card card-1">
                         <a href='SingleView.aspx?queryID=<%# Eval ("ID")%>'>
                             <div class="gradient"></div>
-                            <asp:Image ID="PosterPath" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'" />
+                            <asp:Image ID="PosterPath" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'" /><!-- alt text omitted due to redundant information-->
                             <br />
                             <span class="text-middle">
                                 <asp:Label ID="TitleLabel" CssClass="text-middle" runat="server" Text='<%# Eval("Title") %>'></asp:Label>

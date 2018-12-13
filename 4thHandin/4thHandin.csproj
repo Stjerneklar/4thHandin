@@ -124,6 +124,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Myfiles\logo3.jpg" />
+    <Content Include="Myfiles\logo2.jpg" />
+    <Content Include="Myfiles\logo4.jpg" />
+    <Content Include="Myfiles\logo1.jpg" />
     <Content Include="Myfiles\default-img.jpg" />
     <Content Include="img\mask-title.png" />
     <Content Include="Browse.aspx" />

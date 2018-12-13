@@ -14,7 +14,7 @@
                         <div class="card card-1">
                             <a href='/SingleView.aspx?queryID=<%# Eval ("ID")%>'>
                                 <div class="gradient"></div>
-                                <asp:Image ID="Image2" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'" AlternateText='<%# Eval("Title") %>' />
+                                <asp:Image ID="Image2" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'"/><!-- alt text omitted due to redundant information-->
                                 <label class="card-bottom-year"><%# Eval("Year") %></label>
                                 <label class="card-bottom-genre"><%# Eval("Genre") %></label>
                                 <span class="text-middle">
