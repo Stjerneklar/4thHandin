@@ -190,6 +190,60 @@ namespace _4thHandin
                 DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.MoviesTop10();
                 return MovieListLoader(movieDBListRows);
             }
+
+            public static string RenderPosters(string TypeOfList,string TermIfAny)
+            {
+                List<Movie> movieList = new List<Movie>();
+                switch (TypeOfList)
+                {
+                    case "Top10":
+                        movieList = ListMoviesTop10();
+                        break;
+                    case "Genre":
+                        movieList = ListMoviesByGenre(TermIfAny);
+                        break;
+                    case "Search":
+                        movieList = ListMoviesByTitle(TermIfAny);
+                        break;
+                }
+                string LookMaImmaRepeater = "";
+                int whatrowitis = 0;
+                LookMaImmaRepeater += "<div class='row'>";
+
+                foreach (Movie M in movieList)
+                {
+                    LookMaImmaRepeater += "<div class='col-md-2 ";
+                    if (whatrowitis == 0 | whatrowitis == 5) {               
+                        LookMaImmaRepeater += "col-md-offset-1"; // we need every fifth(each rows starting) column to have this rule, therefore this if.  
+                        whatrowitis = 0;                                          //2 since we will hit the increment again after setting value here, 0 works. 
+                    };
+                    LookMaImmaRepeater += "'>";
+                        LookMaImmaRepeater += "<div class='poster' style='background-image:url("+ M.posterpath +")'>";
+                            LookMaImmaRepeater += "<a href = 'SingleView.aspx?queryID=" + M.id + "' >";
+                                LookMaImmaRepeater += "<div class='gradient'></div>";
+                                LookMaImmaRepeater += "<span class='card-bottom-year'>" + M.year + "</span>";
+                                LookMaImmaRepeater += "<span class='card-bottom-genre'>" + M.genre + "</span>";
+                                LookMaImmaRepeater += "<span id='TitleLabel' class='text-middle'>" + M.title + "</span>";
+                            LookMaImmaRepeater += "</a>";
+                        LookMaImmaRepeater += "</div>";
+                    LookMaImmaRepeater += "</div>";
+
+                    whatrowitis++;
+                }
+                LookMaImmaRepeater += "</div>";
+
+                if (movieList.Count == 1)
+                {
+                    //redirect to single view if we only get one result
+                   HttpContext.Current.Response.Redirect("~/SingleView/?queryID=" + movieList[0].id );
+                }
+                else if (movieList.Count == 0)
+                {
+                    LookMaImmaRepeater = "No Results for that, sorry!";
+                }
+
+                return LookMaImmaRepeater;
+            }
         }
 
         public class Commercials

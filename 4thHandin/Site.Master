@@ -11,9 +11,9 @@
         </asp:PlaceHolder>
 
         <webopt:bundlereference runat="server" path="~/Content/css" />
-         <webopt:bundlereference runat="server" path="~/Content/69b/css" /> 
-     <!--
         <webopt:bundlereference runat="server" path="~/Content/42/css" />
+     <!--
+         <webopt:bundlereference runat="server" path="~/Content/69b/css" /> 
          -->
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -50,12 +50,12 @@
                             <span class="icon-bar "></span>
                         </button>
                         <a class="navbar-brand mobile-hide" runat="server" href="~/">
-                            <img src="/img/mtube.png" alt="Mtube" height="50" style="margin-top: -15px;" /></a>
+                            <img src="img/LogoFilmwalkSmall.png" alt="Filmwalk" /></a>
                          <div class="mobile-show">
-                            <div style="margin-top: 8px; margin-left: 15px; float: left;">
+                            <div>
                                <asp:TextBox ID="TextBoxSearch" runat="server" CssClass="searchtxt form-control top-search-input" TextMode="Search"></asp:TextBox>
                             </div>
-                            <div style="margin-top: 8px; margin-left: 0px; float: left;">
+                            <div>
                                 <asp:Button ID="ButtonSearch" runat="server" Text="Search" OnClick="ButtonSearch_Click" CssClass="buttonsearch btn btn-primary-c btn-outline-secondary top-search-button" />
                            </div>
                         </div>
@@ -66,11 +66,11 @@
                             <li><a runat="server" href="~/Browse">Browse Genres</a></li>
                         </ul>
                         <div class="mobile-hide">
-                            <div style="margin-top: 8px; margin-left: 0px; float: right; ">
+                            <div>
                                 <asp:Button ID="ButtonSearch2" runat="server" Text="Search" OnClick="ButtonSearch2_Click" CssClass="buttonsearch btn btn-primary-c btn-outline-secondary top-search-button" />
                             </div>
-                            <div style="margin-top: 8px; float: right;">
-                                <asp:TextBox ID="TextBoxSearch2" runat="server" CssClass="searchtxt form-control top-search-input"></asp:TextBox>
+                            <div>
+                                <asp:TextBox ID="TextBoxSearch2" runat="server" CssClass="searchtxt form-control"></asp:TextBox>
                             </div>
                         </div>
                     </div>

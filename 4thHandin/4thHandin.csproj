@@ -124,6 +124,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img\FilmwalkBigPosterBg.jpg" />
+    <Content Include="img\LogoFilmwalkBig.png" />
+    <Content Include="img\LogoFilmwalkSmall.png" />
+    <Content Include="img\mtube.png" />
     <Content Include="Myfiles\logo3.jpg" />
     <Content Include="Myfiles\logo2.jpg" />
     <Content Include="Myfiles\logo4.jpg" />

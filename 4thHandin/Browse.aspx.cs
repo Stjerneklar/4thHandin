@@ -6,20 +6,18 @@ namespace _4thHandin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlDataSource1.ConnectionString = FourthProjectLogic.ConnStr;
+            SqlDataSource1.ConnectionString = FourthProjectLogic.ConnStr; //data for dropdownlist
 
             //if no genre querystring, default to action movies
             if (string.IsNullOrWhiteSpace(Request.QueryString["genre"]))
             {
-                Repeater1.DataSource = FourthProjectLogic.Movie.MovieTableAdapter.GetDataByGenre("Action");
+                LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Genre", "Action");
             }
             else //use querystring
             {
-                Repeater1.DataSource = FourthProjectLogic.Movie.MovieTableAdapter.GetDataByGenre(Request.QueryString["genre"]);
+                LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Genre", Request.QueryString["genre"]); 
             }
-            Repeater1.DataBind();
         }
-
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //navigate to page with querystring after selection               

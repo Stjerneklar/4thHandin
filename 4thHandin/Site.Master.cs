@@ -15,12 +15,10 @@ namespace _4thHandin
             //Display a Chuck Norris joke via API about a random teacher
            LabelJoke.Text = FourthProjectLogic.GetJokeFromAPI();
         }
-
         protected string SiteTitle()
         {
             return FourthProjectLogic.CurrentGroupSettings.SiteTitle;
         }
-
         protected void ButtonSearch2_Click(object sender, EventArgs e)
         {
             FourthProjectLogic.SearchMovies(TextBoxSearch2.Text);

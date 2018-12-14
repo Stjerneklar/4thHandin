@@ -13,20 +13,10 @@ namespace _4thHandin
             }
             else
             {
-                //example of the DataAccessLayer being useful: here we work with the data directly from the source instead of depending on the webcontrol(repeater in this case) 
-                // and possibly having logic fail if we decided to change to a gridview ect. we just ask the table we also use for datasource for shit directly.
-                DataAccessLayer.MovieDBListDataTable results = FourthProjectLogic.Movie.MovieTableAdapter.GetMovieBySearchTitle(Request.QueryString["queryName"]);
-                Repeater2.DataSource = results;
-                Repeater2.DataBind();
-
-                if (results.Count == 1)
+                LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Search", Request.QueryString["queryName"]); ;
+                if (LabelThatIsActuallyAnHtmlInjector.Text == "No Results for that, sorry!")
                 {
-                    //redirect to single view if we only get one result
-                    Response.Redirect("~/SingleView/?queryID=" + results.Rows[0][0]);
-                }
-                else if (results.Count == 0)
-                {
-                    label_noresultsmessage.Visible = true;
+                    LabelThatIsActuallyAnHtmlInjector.Visible = true;
                 }
             }
         }

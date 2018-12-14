@@ -66,8 +66,7 @@ namespace _4thHandin
             }
 
             //top 10
-            Repeater1.DataSource = FourthProjectLogic.Movie.MovieTableAdapter.MoviesTop10();
-            Repeater1.DataBind();
+            LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Top10","");
 
             // COMMERCIAL          
             // run the logic for commercial stat tracking - reading and modifying the xml to increment viewcount for the random commercial and passing the commercials id/rowindex/"position"

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace _4thHandin
 {
@@ -13,8 +7,7 @@ namespace _4thHandin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Repeater2.DataSource = FourthProjectLogic.Movie.MovieTableAdapter.MoviesTop10();
-            Repeater2.DataBind();
+            LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Top10", "");
         }
 
         protected void ButtonSearch_Click(object sender, EventArgs e)

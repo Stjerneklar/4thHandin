@@ -51,28 +51,7 @@
         <div class="col-md-12">
             <h1>Top 10 Movies</h1>
             <hr>
-            <asp:Repeater ID="Repeater1" runat="server">
-                <ItemTemplate>
-
-                    <div class="col-md-5th-1 col-sm-4">
-                        <div class="card card-1">
-                            <a href='SingleView.aspx?queryID=<%# Eval ("ID")%>'>
-                                <div class="gradient"></div>
-
-                                <asp:Image ID="Image2" Height="100%" runat="server" ImageUrl='<%# Eval ("PosterPath")%>' onerror="this.src='../Myfiles/default-img.jpg'" />
-                                <label class="card-bottom-year"><%# Eval("Year") %></label>
-                                <label class="card-bottom-genre"><%# Eval("Genre") %></label>
-
-                                <span class="text-middle">
-                                    <asp:Label ID="TitleLabel" CssClass="text-middle" runat="server" Text='<%# Eval("Title") %>'></asp:Label>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
-            
-
+            <asp:Label ID="LabelThatIsActuallyAnHtmlInjector" Text="" runat="server" />
         </div>
     </div>
 
