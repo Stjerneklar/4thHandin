@@ -6,18 +6,15 @@ namespace _4thHandin
     {
         protected void Page_Load(object sender, EventArgs e)
         {          
-            //redirect to home if there is no querystring 
             if (string.IsNullOrWhiteSpace(Request.QueryString["queryName"]))
             {
-                Response.Redirect("~/");
+                //Response.Redirect("~/");
+                label_noresultsmessage.Visible = true;
+                LiteralHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Search", "Avengers");
             }
             else
             {
-                LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Search", Request.QueryString["queryName"]); ;
-                if (LabelThatIsActuallyAnHtmlInjector.Text == "No Results for that, sorry!")
-                {
-                    LabelThatIsActuallyAnHtmlInjector.Visible = true;
-                }
+                LiteralHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Search", Request.QueryString["queryName"]);
             }
         }
     }

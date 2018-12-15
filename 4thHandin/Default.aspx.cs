@@ -7,7 +7,7 @@ namespace _4thHandin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Top10", "");
+            LiteralHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Top10", "");
         }
 
         protected void ButtonSearch_Click(object sender, EventArgs e)

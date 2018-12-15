@@ -181,7 +181,7 @@ namespace _4thHandin
             }
             public static List<Movie> ListMoviesByTitle(string Title)
             {
-                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetDataByTitle(Title);
+                DataAccessLayer.MovieDBListDataTable movieDBListRows = MovieTableAdapter.GetMovieBySearchTitle(Title);
                 return MovieListLoader(movieDBListRows);
             }
 
@@ -208,29 +208,30 @@ namespace _4thHandin
                 }
                 string LookMaImmaRepeater = "";
                 int whatrowitis = 0;
-                LookMaImmaRepeater += "<div class='row'>";
+
+               
 
                 foreach (Movie M in movieList)
                 {
-                    LookMaImmaRepeater += "<div class='col-md-2 ";
-                    if (whatrowitis == 0 | whatrowitis == 5) {               
-                        LookMaImmaRepeater += "col-md-offset-1"; // we need every fifth(each rows starting) column to have this rule, therefore this if.  
-                        whatrowitis = 0;                                          //2 since we will hit the increment again after setting value here, 0 works. 
-                    };
-                    LookMaImmaRepeater += "'>";
-                        LookMaImmaRepeater += "<div class='poster' style='background-image:url("+ M.posterpath +")'>";
-                            LookMaImmaRepeater += "<a href = 'SingleView.aspx?queryID=" + M.id + "' >";
-                                LookMaImmaRepeater += "<div class='gradient'></div>";
+                    string ImageToRender = "/MyFiles/default-img.jpg";
+                    if (M.posterpath != "N/A") { ImageToRender = M.posterpath; };
+                    
+                    if (whatrowitis == 0 | whatrowitis == 5) {     
+                        LookMaImmaRepeater += "<div class='col-md-2 col-md-offset-1'>";
+                        whatrowitis = 0;
+                    } 
+                    else {
+                        LookMaImmaRepeater += "<div class='col-md-2'>";
+                    }
+                            LookMaImmaRepeater += "<a href = 'SingleView.aspx?queryID=" + M.id + "'class='poster' style='background-image:url(" + ImageToRender + ")'>";
                                 LookMaImmaRepeater += "<span class='card-bottom-year'>" + M.year + "</span>";
                                 LookMaImmaRepeater += "<span class='card-bottom-genre'>" + M.genre + "</span>";
                                 LookMaImmaRepeater += "<span id='TitleLabel' class='text-middle'>" + M.title + "</span>";
                             LookMaImmaRepeater += "</a>";
                         LookMaImmaRepeater += "</div>";
-                    LookMaImmaRepeater += "</div>";
 
                     whatrowitis++;
                 }
-                LookMaImmaRepeater += "</div>";
 
                 if (movieList.Count == 1)
                 {

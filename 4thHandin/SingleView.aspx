@@ -1,37 +1,42 @@
 ﻿<%@ Page Title="Movie Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SingleView.aspx.cs" Inherits="_4thHandin.SingleView" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container container-spacing">
+    <div class="row">
         <div class="col-md-12 button-box">
             <a class="btn btn-primary-c" href="Default.aspx">
                 <i class="icon-chevron-left"></i>Go Back</a>
         </div>
-        <div class="col-md-9 card-single-view radius" style="padding: 10px;">
-
-            <div class="col-md-4 col-sm-12 image-poster-box">
-                <asp:Image ID="ImagePoster" CssClass="single-view-img-center" runat="server" Height="356px"  AlternateText='Poster for the movie' ImageUrl="~/MyFiles/default-img.png" />
+    </div>
+    <div class="row">
+       <div class="col-md-8 col-md-offset-1 card-single-view">
+           <div class="col-md-4 col-sm-12 image-poster-box">
+                <asp:Image ID="ImagePoster" CssClass="single-view-img-center" runat="server"  AlternateText='Poster for the movie' ImageUrl="~/MyFiles/default-img.png" />
             </div>
 
-            <div class="col-md-8 col-sm-12" style="padding-top:10px;padding-bottom:40px;">
-
-                <asp:Label ID="LabelMessages" runat="server" Text="Result"></asp:Label><br />
-                
+            <div class="col-md-8 col-sm-12">
+                <p><asp:Label ID="LabelMessages" runat="server" Text="Result"></asp:Label></p>
                 <asp:Panel ID="MagicPanel" runat="server"> 
-                    <asp:Label ID="LabelResultTitle" CssClass="h1" runat="server" Text="Result"></asp:Label><br />
-                    <asp:Label ID="LabelResultRating" CssClass="h1" runat="server" Text="Result"></asp:Label><br />
-                    <asp:Label ID="LabelResultChildRating" CssClass="h1" runat="server" Text="Result"></asp:Label><br />
-                    <asp:Label ID="LabelResultYear" CssClass="h1" runat="server" Text="Result"></asp:Label><br />
+                    <h1>
+                        <asp:Label ID="LabelResultTitle" runat="server" Text="Result"></asp:Label>
+                    </h1>
+                    <p>
+                        <asp:Label ID="LabelResultRating" runat="server" Text="Result"></asp:Label>
+                        <asp:Label ID="LabelResultChildRating" runat="server" Text="Result"></asp:Label>
+                        <asp:Label ID="LabelResultYear" runat="server" Text="Result"></asp:Label>
+                    </p>
                     <hr />
-                    <asp:Label ID="LabelResultActors" runat="server" Text="Result"></asp:Label><br /><br />                
-                    <asp:Label ID="LabelResultDescription" runat="server" Text="Result"></asp:Label><br />
+                    <p>
+                        <asp:Label ID="LabelResultActors" runat="server" Text="Result"></asp:Label>                
+                        <asp:Label ID="LabelResultDescription" runat="server" Text="Result"></asp:Label>
+                    </p>
                 </asp:Panel>
             </div>
         </div>
 
-        <div class="col-md-3 col-sm-12  offset-md-1">
+        <div class="col-md-2 col-sm-12 ">
             <asp:repeater id="rpMyRepeater" runat="server">
                 <ItemTemplate>
-                    <div class="commercial-box radius">
+                    <div class="commercial-box">
                         <a href="http://<%# Eval("webpage") %>">
                             <img alt="Commercial for <%# Eval("company") %>" style="width:100%" src="../Myfiles/<%# Eval("logo")%>" />
                             <span style="text-align:center">
@@ -46,13 +51,14 @@
             </asp:repeater>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12">
-            <h1>Top 10 Movies</h1>
+            <h3>Top Movies</h3>
             <hr>
-            <asp:Label ID="LabelThatIsActuallyAnHtmlInjector" Text="" runat="server" />
         </div>
+    </div>
+    <div class="row g42repeater">
+        <asp:Literal ID="LiteralHtmlInjector" text="" runat="server" /> 
     </div>
 
 

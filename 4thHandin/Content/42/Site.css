@@ -14,12 +14,19 @@
     padding: 0px;
 }
 
+span#DevLabel {
+    display: none;
+    padding-top: 5px;
+}
+
+
 .searchtxt {
     width: 150px;
     float: right;
-    background: transparent;
+    background: #27134454;
     margin-right: 5px;
     margin-top: 7px;
+    color: #9d9d9d;
 }
 
 .buttonsearch {
@@ -35,32 +42,42 @@
 
 .middle-logo img {
     width: 100%;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    transform: scale(0.85);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    transform: scale(0.833);
 }
+
+a:hover, a:focus {
+    color: #786299;
+}
+
+a {
+    color: #d382ce;
+    text-decoration: none;
+}
+
+
 
 /* Mein coed*/
-.col-md-2 {
-    overflow: hidden;
-    margin-bottom: 20px;
+.g42repeater .col-md-2 {
+    /* overflow: hidden; */
+    margin-top: 65px;
+    height: 270px;
 }
 
-    .col-md-2 .poster {
-        min-height: 280px;
-        background-position: center;
-        background-size: cover;
-    }
+.col-md-2 .poster {
+    height: 260px;
+    min-height: 260px;
+    background-position: center;
+    background-size: cover;
+}
 
-    .col-md-2 span {
-        /* display: none; */
-    }
+
 
 .body-content h3 {
     text-align: center;
-    margin-bottom: 15px;
-    margin-top: 40px;
     font-size: 1.5em;
+    margin-bottom: -24px;
 }
 
 /*vimeoshiteo*/
@@ -69,14 +86,15 @@ div#video-overlay {
     width: 100%;
     height: 100%;
     position: fixed;
-    background-color: #220d42e3;
+    /*background-color: #220d42e3;  */
+    background-color: #220d42d1;
     background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     z-index: 1;
 }
 
 .vimeo-wrapper {
     position: fixed;
-    top: 0;
+    top: 50px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -94,6 +112,7 @@ div#video-overlay {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        filter: grayscale(1) blur(3px);
     }
 
 @media only screen and (max-width: 1160px) {
@@ -103,30 +122,34 @@ div#video-overlay {
 }
 
 
-.poster a {
+.poster {
     position: absolute;
     top: 0;
     bottom: 0;
     display: block;
-    left: 15px;
-    right: 15px;
+    left: 5%;
+    right: 5%;
 }
 
 span.card-bottom-year {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: -24px;
+    right: 0px;
+    z-index: 1;
 }
 
 span.card-bottom-genre {
     position: absolute;
-    bottom: 0px;
+    bottom: -24px;
+    left: 0px;
     right: 0px;
+    z-index: 0;
+    text-align: left !important;
 }
 
 #TitleLabel {
     position: absolute;
-    top: 0px;
+    top: -30px;
     left: 0;
     right: 0;
     text-align: center;
@@ -135,20 +158,69 @@ span.card-bottom-genre {
     padding: 5px 0px;
 }
 
+#MainContent_DropDownList1 {
+    margin: 20px auto;
+    width: 300px;
+    display: block;
+    background: transparent;
+    color: white;
+    font-size: 1.5em;
+}
+
+    #MainContent_DropDownList1 option {
+        background-color: #271344;
+    }
+
 .poster span {
     text-align: center;
     background: #271344;
-    padding: 5px;
+    padding: 2px 5px;
 }
 
 
+#MainContent_LiteralHtmlInjector .col-md-2 {
+    padding: 0;
+}
+
+
+hr {
+    border-color: #2e5992;
+    margin-left: 7.8%;
+    margin-right: 7.8%;
+    margin-top: 30px;
+    margin-bottom: 13px;
+}
+
+
+.commercial-box span:before {
+    text-align: center;
+    content: "Visit our sponsor";
+    font-size: 0.9em;
+    width: 49%;
+    display: block;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.commercial-box span {
+    font-size: 0.8em;
+    width: 100%;
+    float: right;
+    display: block;
+    margin-top: 5px;
+}
+
+footer {
+    font-size: 0.78em;
+    color: transparent;
+}
 
 /* Mein coed END*/
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 /*customs*/
@@ -190,27 +262,6 @@ textarea {
     }
 }
 
-/*shared poster styling*/
-.gradient {
-    background-image: url(../../img/mask-title.png);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.5;
-    border-radius: 2px;
-    background-position: bottom;
-    transition: all 0.3s ease;
-}
-
-    .gradient:hover {
-        opacity: 0.7;
-    }
-
-        .gradient:hover .card {
-            opacity: 0.7;
-        }
 
 .poster {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -233,7 +284,7 @@ textarea {
     bottom: 20px;
     right: 20px;
     background: rgb(0, 0, 0);
-    background: rgba(73, 179, 203, 0.7);
+    background: rgb(56, 41, 76);
     width: 50px;
     height: 50px;
     display: block;
@@ -272,8 +323,14 @@ textarea {
             top: 5px;
         }
 
+.single-view-img-center {
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 100%;
+}
 
-/*imported mobile stuff from stan */
+
+/*  mobile  */
 
 .mobile-hide {
     display: block;
@@ -291,23 +348,7 @@ textarea {
     .mobile-show {
         display: block;
     }
-
-    .commercial-box {
-    }
 }
 
 @media only screen and (max-width: 480px) {
-    .card {
-    }
-
-    .mobile-hide {
-        display: none;
-    }
-
-    .mobile-show {
-        display: block;
-    }
-
-    .commercial-box {
-    }
 }

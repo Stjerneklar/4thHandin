@@ -48,6 +48,7 @@ namespace _4thHandin
                         ImagePoster.ImageUrl = poster;
                     }
                 }
+                //show title label smaller than title
                 LabelResultTitle.Text = "Title: " + nodelist[0].SelectSingleNode("@title").InnerText;
                 LabelResultRating.Text = "Rating: " + nodelist[0].SelectSingleNode("@imdbRating").InnerText;
                 LabelResultYear.Text = "Year: " + nodelist[0].SelectSingleNode("@year").InnerText;
@@ -66,7 +67,7 @@ namespace _4thHandin
             }
 
             //top 10
-            LabelThatIsActuallyAnHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Top10","");
+            LiteralHtmlInjector.Text = FourthProjectLogic.Movie.RenderPosters("Top10","");
 
             // COMMERCIAL          
             // run the logic for commercial stat tracking - reading and modifying the xml to increment viewcount for the random commercial and passing the commercials id/rowindex/"position"

@@ -51,7 +51,7 @@
                             <span class="icon-bar "></span>
                         </button>
                         <a class="navbar-brand mobile-hide" runat="server" href="~/">
-                            <img src="img/LogoFilmwalkSmall.png" alt="Filmwalk" /></a>
+                            <img src="/img/LogoFilmwalkSmall.png" alt="Filmwalk" /></a>
                          <div class="mobile-show">
                             <div>
                                <asp:TextBox ID="TextBoxSearch" runat="server" CssClass="searchtxt form-control top-search-input" TextMode="Search"></asp:TextBox>
@@ -77,14 +77,17 @@
                     </div>
                 </div>
             </div>
+
             <div class="container body-content">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-                <footer >
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+                </asp:ContentPlaceHolder>
+                <a href="javascript:" id="return-to-top">
+                    <i class="icon-chevron-up"></i>
+                </a>
+                <footer>
                     <div class="row">
                         <div class="col-md-12">
-                           <a href="javascript:" id="return-to-top">
-                               <i class="icon-chevron-up"></i>
-                           </a>
                             <hr />
                             <p style="text-align:center" alt="Made by group 42 & 69 - collectively represented by their combined value of 111 expressed in roman numerals - CXI" >
                                 <asp:Label ID="LabelJoke" runat="server" Text="Label"></asp:Label> - <asp:Label ID="DevLabel" runat="server" Text='CXI'></asp:Label>
@@ -93,13 +96,14 @@
                     </div>                    
                 </footer>
             </div>
-            <div class="vimeo-wrapper">
-                <div id="video-overlay"></div>
+        </form>
+
+        <div class="vimeo-wrapper">
+           <div id="video-overlay"></div>
                <iframe src="https://player.vimeo.com/video/305764275?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
-        </form>
-        <script>
 
+        <script>
         $( document ).ready(function() {
             // ===== enter key search ==== 
         $( ".searchtxt" ).keydown(function( event ) {
@@ -123,7 +127,6 @@
                 scrollTop: 0                       // Scroll to top of body
             }, 500);
         });
-
         </script>
     </body>
 </html>

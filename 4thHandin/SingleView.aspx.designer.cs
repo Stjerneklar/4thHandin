@@ -103,12 +103,12 @@ namespace _4thHandin {
         protected global::System.Web.UI.WebControls.Repeater rpMyRepeater;
         
         /// <summary>
-        /// LabelThatIsActuallyAnHtmlInjector control.
+        /// LiteralHtmlInjector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelThatIsActuallyAnHtmlInjector;
+        protected global::System.Web.UI.WebControls.Literal LiteralHtmlInjector;
     }
 }

@@ -7,6 +7,8 @@
             <asp:DropDownList CssClass="btn btn-default dropdown-toggle" ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Genre" DataValueField="Genre" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             </asp:DropDownList>
         </div>  
-        <asp:Label ID="LabelThatIsActuallyAnHtmlInjector" Text="" runat="server" />
+    </div>
+    <div class="row g42repeater">
+        <asp:Literal ID="LiteralHtmlInjector" text="" runat="server" /> 
     </div>
 </asp:Content>
