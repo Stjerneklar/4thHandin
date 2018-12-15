@@ -49,13 +49,13 @@ namespace _4thHandin {
         protected global::System.Web.UI.WebControls.Label LabelResultTitle;
         
         /// <summary>
-        /// LabelResultRating control.
+        /// LabelResultYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelResultRating;
+        protected global::System.Web.UI.WebControls.Label LabelResultYear;
         
         /// <summary>
         /// LabelResultChildRating control.
@@ -67,13 +67,13 @@ namespace _4thHandin {
         protected global::System.Web.UI.WebControls.Label LabelResultChildRating;
         
         /// <summary>
-        /// LabelResultYear control.
+        /// LabelResultRating control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelResultYear;
+        protected global::System.Web.UI.WebControls.Label LabelResultRating;
         
         /// <summary>
         /// LabelResultActors control.

@@ -72,6 +72,35 @@ a {
     background-size: cover;
 }
 
+span#MainContent_LabelResultTitle {
+    color: white;
+}
+
+span#MainContent_LabelResultYear {
+    color: white;
+}
+
+span#MainContent_LabelResultChildRating {
+    color: white;
+}
+
+span#MainContent_LabelResultRating {
+    color: white;
+    font-size: 2em;
+}
+
+h1 {
+    font-size: 3.3em;
+}
+
+span#MainContent_LabelResultActors {
+    color: white;
+}
+
+span#MainContent_LabelResultDescription {
+    color: white;
+    font-size: 1.5em;
+}
 
 
 .body-content h3 {
@@ -329,6 +358,9 @@ textarea {
     width: 100%;
 }
 
+span#LabelJoke {
+    color: white;
+}
 
 /*  mobile  */
 

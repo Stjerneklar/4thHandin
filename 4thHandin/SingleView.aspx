@@ -14,21 +14,16 @@
             </div>
 
             <div class="col-md-8 col-sm-12">
-                <p><asp:Label ID="LabelMessages" runat="server" Text="Result"></asp:Label></p>
+                <p><asp:Label ID="LabelMessages" Visible="false" runat="server" Text="Result"></asp:Label></p>
                 <asp:Panel ID="MagicPanel" runat="server"> 
                     <h1>
                         <asp:Label ID="LabelResultTitle" runat="server" Text="Result"></asp:Label>
                     </h1>
-                    <p>
-                        <asp:Label ID="LabelResultRating" runat="server" Text="Result"></asp:Label>
-                        <asp:Label ID="LabelResultChildRating" runat="server" Text="Result"></asp:Label>
-                        <asp:Label ID="LabelResultYear" runat="server" Text="Result"></asp:Label>
-                    </p>
-                    <hr />
-                    <p>
-                        <asp:Label ID="LabelResultActors" runat="server" Text="Result"></asp:Label>                
-                        <asp:Label ID="LabelResultDescription" runat="server" Text="Result"></asp:Label>
-                    </p>
+                    <p><asp:Label ID="LabelResultYear" runat="server" Text="Result"></asp:Label> - 
+                    <asp:Label ID="LabelResultChildRating" runat="server" Text="Result"></asp:Label> - 
+                    <span>IMDB rating: </span><asp:Label ID="LabelResultRating" runat="server" Text="Result"></asp:Label></p>
+                    <p><span>starring: </span><asp:Label ID="LabelResultActors" runat="server" Text="Result"></asp:Label></p>
+                    <p><em><asp:Label ID="LabelResultDescription" runat="server" Text="Result"></asp:Label></em></p>
                 </asp:Panel>
             </div>
         </div>

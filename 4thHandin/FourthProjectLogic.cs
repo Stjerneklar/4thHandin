@@ -37,7 +37,7 @@ namespace _4thHandin
 
         public static GroupSettings CurrentGroupSettings = InitGroupSettings();
 
-            public static void SearchMovies(string searchterm) { HttpContext.Current.Response.Redirect("~/search/?queryName=" + searchterm); }
+            public static void SearchMovies(string searchterm) { HttpContext.Current.Response.Redirect("~/search?queryName=" + searchterm); }
 
         public static string GetJokeFromAPI()
         {
@@ -236,7 +236,7 @@ namespace _4thHandin
                 if (movieList.Count == 1)
                 {
                     //redirect to single view if we only get one result
-                   HttpContext.Current.Response.Redirect("~/SingleView/?queryID=" + movieList[0].id );
+                   HttpContext.Current.Response.Redirect("~/SingleView?queryID=" + movieList[0].id );
                 }
                 else if (movieList.Count == 0)
                 {

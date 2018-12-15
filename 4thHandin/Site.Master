@@ -100,7 +100,7 @@
 
         <div class="vimeo-wrapper">
            <div id="video-overlay"></div>
-               <iframe src="https://player.vimeo.com/video/305764275?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              <iframe src="https://player.vimeo.com/video/305764275?background=1&autoplay=1&loop=1&byline=0&title=0" allow="autoplay; fullscreen" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
 
         <script>

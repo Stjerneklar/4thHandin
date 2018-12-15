@@ -24,10 +24,7 @@ namespace _4thHandin
 
             themovie.IncrementViewcount(); //what it says on the tin, this is how we track views
 
-            //get movie name from object and show in label - thats not the movies fucking name, how about asking me about shit instead of commenting methods out?
-            LabelMessages.Text = themovie.title;  // .ToString();
-            
-            string result = FourthProjectLogic.OmdbAPI.NameAPI(themovie.title,themovie.year); //add year to make sure we get correct results?
+            string result = FourthProjectLogic.OmdbAPI.NameAPI(themovie.title,themovie.year); 
 
             File.WriteAllText(Server.MapPath("~/MyFiles/Latestresult.xml"), result);
             XmlDocument doc = new XmlDocument();
@@ -48,22 +45,21 @@ namespace _4thHandin
                         ImagePoster.ImageUrl = poster;
                     }
                 }
-                //show title label smaller than title
-                LabelResultTitle.Text = "Title: " + nodelist[0].SelectSingleNode("@title").InnerText;
-                LabelResultRating.Text = "Rating: " + nodelist[0].SelectSingleNode("@imdbRating").InnerText;
-                LabelResultYear.Text = "Year: " + nodelist[0].SelectSingleNode("@year").InnerText;
-                LabelResultActors.Text = "Actors: " + nodelist[0].SelectSingleNode("@actors").InnerText;
-                LabelResultDescription.Text = "Description: " + nodelist[0].SelectSingleNode("@plot").InnerText;
-                LabelResultChildRating.Text = "Child Rating: " + nodelist[0].SelectSingleNode("@rated").InnerText;
 
+                LabelResultTitle.Text = nodelist[0].SelectSingleNode("@title").InnerText;
+                LabelResultRating.Text = nodelist[0].SelectSingleNode("@imdbRating").InnerText;
+                LabelResultYear.Text = nodelist[0].SelectSingleNode("@year").InnerText;
+                LabelResultActors.Text = nodelist[0].SelectSingleNode("@actors").InnerText;
+                LabelResultDescription.Text = nodelist[0].SelectSingleNode("@plot").InnerText;
+                LabelResultChildRating.Text = nodelist[0].SelectSingleNode("@rated").InnerText;
                 MagicPanel.Visible = true;
             }
             else
             {
                 MagicPanel.Visible = false;
+                LabelMessages.Visible = true;
                 LabelMessages.Text = "Movie not found";
                 ImagePoster.ImageUrl = "/Myfiles/default-img.jpg";
-                LabelResultTitle.Text = "no Results";
             }
 
             //top 10
