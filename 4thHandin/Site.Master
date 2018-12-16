@@ -89,7 +89,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <hr />
-                            <p style="text-align:center" alt="Made by group 42 & 69 - collectively represented by their combined value of 111 expressed in roman numerals - CXI" >
+                            <p alt="Made by group 42 & 69 - collectively represented by their combined value of 111 expressed in roman numerals - CXI" >
                                 <asp:Label ID="LabelJoke" runat="server" Text="Label"></asp:Label> - <asp:Label ID="DevLabel" runat="server" Text='CXI'></asp:Label>
                             </p>
                         </div>

@@ -19,9 +19,8 @@
                     <h1>
                         <asp:Label ID="LabelResultTitle" runat="server" Text="Result"></asp:Label>
                     </h1>
-                    <p><asp:Label ID="LabelResultYear" runat="server" Text="Result"></asp:Label> - 
-                    <asp:Label ID="LabelResultChildRating" runat="server" Text="Result"></asp:Label> - 
-                    <span>IMDB rating: </span><asp:Label ID="LabelResultRating" runat="server" Text="Result"></asp:Label></p>
+                    <p><asp:Label ID="LabelResultYear" runat="server" Text="Result"></asp:Label> Rated <asp:Label ID="LabelResultChildRating" runat="server" Text="Result"></asp:Label>  </p>
+                    <p><span>IMDB rating: </span><asp:Label ID="LabelResultRating" runat="server" Text="Result"></asp:Label></p>
                     <p><span>starring: </span><asp:Label ID="LabelResultActors" runat="server" Text="Result"></asp:Label></p>
                     <p><em><asp:Label ID="LabelResultDescription" runat="server" Text="Result"></asp:Label></em></p>
                 </asp:Panel>
@@ -33,11 +32,11 @@
                 <ItemTemplate>
                     <div class="commercial-box">
                         <a href="http://<%# Eval("webpage") %>">
-                            <img alt="Commercial for <%# Eval("company") %>" style="width:100%" src="../Myfiles/<%# Eval("logo")%>" />
-                            <span style="text-align:center">
+                            <img alt="Commercial for <%# Eval("company") %>" src="../Myfiles/<%# Eval("logo")%>" />
+                            <span>
                                 <%# Eval("company") %>
                             </span>
-                            <div style="display:none" class="ad-viewcount">
+                            <div class="ad-viewcount">
                                 <%# Eval("viewcount") %>
                             </div>
                         </a>
